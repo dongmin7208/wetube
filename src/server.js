@@ -1,31 +1,43 @@
 import express from "express"
 import morgan from "morgan";
+import globalRouter from "./routers/globalRouter"
+import videoRouter from "./routers/videoRouter"
+import userRouter from "./routers/userRouter"
 //app 이 아니라도괜찮음.
 const PORT = 4000;
 const app = express();
 const logger = morgan("dev")
+app.use(logger);
+
 /*
 morgan("dev")
 GET / 304 3.444 ms - -
 GET /login 200 0.631 ms - 5
 */
 
-const home = (req, res) => {
-    console.log("I will respond.")
-    return res.send("hello")
-}
-const login = (req, res) => {
-    return res.send("login")
-}
-// logger함수는 middleware를 return해준다.
-app.use(logger);
-app.get("/", home);
-app.get("/login", login);
+
+
+
+app.use("/", globalRouter);
+app.use("/videos", videoRouter);
+app.use("/users", userRouter);
 
 
 const handleListening = () => console.log(`Server listenting on port http://localhost:${PORT}`)
 
 app.listen(PORT, handleListening);
+// const home = (req, res) => {
+//     console.log("I will respond.")
+//     return res.send("hello")
+// }
+// const login = (req, res) => {
+//     return res.send("login")
+// }
+// logger함수는 middleware를 return해준다.
+// app.get("/", home);
+// app.get("/login", login);
+
+
 // const logger = (req, res, next) => {
 //     console.log("I'm in the middle!");
 //     // return res.send("I havethe Power")
@@ -63,4 +75,3 @@ app.listen(PORT, handleListening);
 // global middleware을 만들어줄수있음. 어느 url에도 작동시켜줌!
 
 // app.get("/login", handleLogin);
-
