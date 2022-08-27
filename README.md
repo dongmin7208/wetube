@@ -7,14 +7,14 @@ Routers! Plan
 /login -> Login
 /search -> Search
 
-/user/edit -> Edit user
-/user/delete -> Delete user
+/user/:id -> See User
+/users/logout -> Log Out
+/user/edit -> Edit My Profile
+/user/delete -> Delete My Profile
 
-/videos/watch -> Watch Video
-/videos/edit -> Edit Video
-/videos/delete -> Delete video
-/videos/comments -> Comments on a video
-/videos/comments/delete ->
-Delete A Comment of a Video
 
+/videos/:id -> See Video
+/videos/:id/edit -> Edit Video
+/videos/:id/delete -> Delete video
+/videos/upload -> Upload Video
 ```
