@@ -18,3 +18,5 @@ Routers! Plan
 /videos/:id/delete -> Delete video
 /videos/upload -> Upload Video
 ```
+
+![db](./src/readme/show_dbs.png)
